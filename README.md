@@ -94,6 +94,23 @@ Build person detection INT8 example and flash image, flash image name will be `p
 make person_detection_int8
 make flash example=person_detection_int8
 ```
+debug show image 
+add print image raw data to image_provider.cc
+```
+  TF_LITE_REPORT_ERROR(error_reporter, "000 frame 000");
+  for (uint32_t i = 0; i < (kNumCols * kNumRows); i++) {
+
+      TF_LITE_REPORT_ERROR(error_reporter, "%d",(image_data[i]+128));
+  }  
+  TF_LITE_REPORT_ERROR(error_reporter, "--- frame ---");
+
+```
+use python uart dump tool on to_bitmap folder
+```
+python dump_serial.py
+```
+![image_no_person](https://github.com/ruyi-tsai/himax_tflm/blob/master/tensorflow/lite/micro/examples/person_detection/himax_EVB_no_person.png)
+![image_person](https://github.com/ruyi-tsai/himax_tflm/blob/master/tensorflow/lite/micro/examples/person_detection/himax_EVB_person.png)
 
 Build handwriting example and flash image, flash image name will be `handwriting.img`. please check [here](tensorflow/lite/micro/examples/handwriting/README.md#handwriting-example) to know more about handwriting detail. 
 
