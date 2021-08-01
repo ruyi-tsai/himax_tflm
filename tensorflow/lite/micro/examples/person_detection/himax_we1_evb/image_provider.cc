@@ -24,6 +24,7 @@ limitations under the License.
 #include "hx_drv_tflm.h"  // NOLINT
 #include "tensorflow/lite/micro/examples/person_detection/model_settings.h"
 
+#include "tensorflow/lite/micro/debug_log.h"
 hx_drv_sensor_image_config_t g_pimg_config;
 
 TfLiteStatus GetImage(tflite::ErrorReporter* error_reporter, int image_width,
@@ -42,6 +43,14 @@ TfLiteStatus GetImage(tflite::ErrorReporter* error_reporter, int image_width,
   hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                        g_pimg_config.img_width, g_pimg_config.img_height,
                        image_data, image_width, image_height);
+  
+  TF_LITE_REPORT_ERROR(error_reporter, "000 frame 000");
+  for (uint32_t i = 0; i < (kNumCols * kNumRows); i++) {
+
+      TF_LITE_REPORT_ERROR(error_reporter, "%d",(image_data[i]+128));
+  }  
+  TF_LITE_REPORT_ERROR(error_reporter, "--- frame ---");
+
 
   return kTfLiteOk;
 }
