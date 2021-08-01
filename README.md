@@ -109,7 +109,11 @@ use python uart dump tool on to_bitmap folder
 ```
 python dump_serial.py
 ```
+no person image test
 ![image_no_person](https://github.com/ruyi-tsai/himax_tflm/blob/master/tensorflow/lite/micro/examples/person_detection/himax_EVB_no_person.png)
+
+person image test
+
 ![image_person](https://github.com/ruyi-tsai/himax_tflm/blob/master/tensorflow/lite/micro/examples/person_detection/himax_EVB_person.png)
 
 Build handwriting example and flash image, flash image name will be `handwriting.img`. please check [here](tensorflow/lite/micro/examples/handwriting/README.md#handwriting-example) to know more about handwriting detail. 
